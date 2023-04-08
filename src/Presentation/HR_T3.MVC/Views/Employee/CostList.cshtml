@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HR_T3.Domain.Entities.Cost>
+
+@{
+    ViewData["Title"] = "Harcama Listesi";
+}
+
+<h2>Harcama Listesi</h2>
+
+<p>
+    <a asp-action="Create">Yeni Talep Girişi</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Talep Türü </th>
+            <th> Talep Tutarı </th>
+            <th> Talep Tarihi </th>
+            <th> Cevaplanma Tarihi </th>
+            <th> Onay Durumu </th>
+            <th> Ek Bilgiler </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeOfCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Damage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResponseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplyDate)
+                </td>
+
+                <td>
+                    @if (item.ApprovalStatus == HR_T3.Domain.Enums.ApprovalStatus.Bekleyen)
+                    {
+                        <label class="badge badge-warning">Bekleyen</label>
+                    }
+                    else if (item.ApprovalStatus == HR_T3.Domain.Enums.ApprovalStatus.Onaylandı)
+                    {
+                        <label class="badge badge-success">Onaylandı</label>
+                    }
+                    else
+                    {
+                        if (item.ApprovalStatus == HR_T3.Domain.Enums.ApprovalStatus.Iptal)
+                        {
+                            <label class="badge badge-danger">İptal edildi</label>
+                        }
+                        else
+                        {
+                            <label class="badge badge-danger">Reddedildi</label>
+                        }
+
+
+                    }
+
+                </td>
+                <td> @Html.DisplayFor(modelItem => item.File)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

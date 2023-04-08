@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{F61598AA-93EA-4C25-90C1-D811C64A75C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{ED6B815A-2B81-40E6-A258-4BFE29737703}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7003F70E-6A07-4706-89DB-8B7E61F22A91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{24B22D8A-D9AB-41DA-B1DA-769C669D560F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_T3.Application", "src\Core\HR_T3.Application\HR_T3.Application.csproj", "{BDE462F3-C551-4CD8-BB8F-925201FB8D60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_T3.Domain", "src\Core\HR_T3.Domain\HR_T3.Domain.csproj", "{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_T3.Infrastructure", "src\Infrastructure\HR_T3.Infrastructure\HR_T3.Infrastructure.csproj", "{19F2755E-AC54-474A-81CD-0E41EADEB6FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F07CDC96-90C0-42B9-A489-405B9F66843C} = {F07CDC96-90C0-42B9-A489-405B9F66843C}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_T3.Persistence", "src\Infrastructure\HR_T3.Persistence\HR_T3.Persistence.csproj", "{F07CDC96-90C0-42B9-A489-405B9F66843C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_T3.MVC", "src\Presentation\HR_T3.MVC\HR_T3.MVC.csproj", "{701841AB-5DFD-48C2-8A8A-1C1160A293BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDE462F3-C551-4CD8-BB8F-925201FB8D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE462F3-C551-4CD8-BB8F-925201FB8D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE462F3-C551-4CD8-BB8F-925201FB8D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE462F3-C551-4CD8-BB8F-925201FB8D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F2755E-AC54-474A-81CD-0E41EADEB6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F2755E-AC54-474A-81CD-0E41EADEB6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F2755E-AC54-474A-81CD-0E41EADEB6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F2755E-AC54-474A-81CD-0E41EADEB6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07CDC96-90C0-42B9-A489-405B9F66843C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07CDC96-90C0-42B9-A489-405B9F66843C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07CDC96-90C0-42B9-A489-405B9F66843C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07CDC96-90C0-42B9-A489-405B9F66843C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701841AB-5DFD-48C2-8A8A-1C1160A293BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701841AB-5DFD-48C2-8A8A-1C1160A293BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701841AB-5DFD-48C2-8A8A-1C1160A293BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701841AB-5DFD-48C2-8A8A-1C1160A293BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED6B815A-2B81-40E6-A258-4BFE29737703} = {F61598AA-93EA-4C25-90C1-D811C64A75C1}
+		{7003F70E-6A07-4706-89DB-8B7E61F22A91} = {F61598AA-93EA-4C25-90C1-D811C64A75C1}
+		{24B22D8A-D9AB-41DA-B1DA-769C669D560F} = {F61598AA-93EA-4C25-90C1-D811C64A75C1}
+		{BDE462F3-C551-4CD8-BB8F-925201FB8D60} = {24B22D8A-D9AB-41DA-B1DA-769C669D560F}
+		{E0CB36B1-0B99-45AF-910A-2E96ED2E0BB0} = {24B22D8A-D9AB-41DA-B1DA-769C669D560F}
+		{19F2755E-AC54-474A-81CD-0E41EADEB6FF} = {ED6B815A-2B81-40E6-A258-4BFE29737703}
+		{F07CDC96-90C0-42B9-A489-405B9F66843C} = {ED6B815A-2B81-40E6-A258-4BFE29737703}
+		{701841AB-5DFD-48C2-8A8A-1C1160A293BD} = {7003F70E-6A07-4706-89DB-8B7E61F22A91}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {834459B5-A59F-479E-A0A2-3C3C001EB554}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/cangire126
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = src\\Core\\HR_T3.Application\\HR_T3.Application.csproj
+		SccProjectTopLevelParentUniqueName1 = HR_T3.sln
+		SccProjectName1 = src/Core/HR_T3.Application
+		SccLocalPath1 = src\\Core\\HR_T3.Application
+		SccProjectUniqueName2 = src\\Core\\HR_T3.Domain\\HR_T3.Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = HR_T3.sln
+		SccProjectName2 = src/Core/HR_T3.Domain
+		SccLocalPath2 = src\\Core\\HR_T3.Domain
+		SccProjectUniqueName3 = src\\Infrastructure\\HR_T3.Infrastructure\\HR_T3.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName3 = HR_T3.sln
+		SccProjectName3 = src/Infrastructure/HR_T3.Infrastructure
+		SccLocalPath3 = src\\Infrastructure\\HR_T3.Infrastructure
+		SccProjectUniqueName4 = src\\Infrastructure\\HR_T3.Persistence\\HR_T3.Persistence.csproj
+		SccProjectTopLevelParentUniqueName4 = HR_T3.sln
+		SccProjectName4 = src/Infrastructure/HR_T3.Persistence
+		SccLocalPath4 = src\\Infrastructure\\HR_T3.Persistence
+		SccProjectUniqueName5 = src\\Presentation\\HR_T3.MVC\\HR_T3.MVC.csproj
+		SccProjectTopLevelParentUniqueName5 = HR_T3.sln
+		SccProjectName5 = src/Presentation/HR_T3.MVC
+		SccLocalPath5 = src\\Presentation\\HR_T3.MVC
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,124 @@
+﻿@using HR_T3.Application.Helpers;
+@model EmployeeDetailVM
+
+@{
+    ViewData["Title"] = "Kullanıcı Detayları";
+}
+
+<div class="page-header">
+    <h3 class="page-title text-center">
+        <span class="page-title-icon bg-gradient-primary text-white me-2">
+            <i class="mdi mdi-home"></i>
+        </span> @ViewData["Title"]
+    </h3>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 stretch-card grid-margin align-content-center">
+        <div class="card card-img-holder text-secondary">
+            <div class="card-body" style="overflow-x:auto;">
+                <img src="~/@Model.Photo" class="card-img-fixed" width="200" height="200" alt="circle-image" />
+                <h2 class="font-weight-normal mb-3">
+                    @Model.Name @Model.MiddleName  @Model.Surname @Model.LastSurName
+                </h2>
+                <table class="table">
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Department)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Department</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Email)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Email</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.PhoneNumber)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">
+                                @string.Format("{0} ({1}) {2} {3} {4}",
+                                Model.PhoneNumber.Substring(0, 1),
+                                Model.PhoneNumber.Substring(1, 3),
+                                Model.PhoneNumber.Substring(4, 2),
+                                Model.PhoneNumber.Substring(6, 2),
+                                Model.PhoneNumber.Substring(8, 2)
+                                )
+
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Address)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Address</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Title)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Title</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Birthday)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Birthday.ToString("D")</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Graduation)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@EnumHelper.GetEnumDisplayName(Model.Graduation)</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.StartDateOfWork)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.StartDateOfWork.ToString("D")</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.AnnualPermit)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.AnnualPermit Gün</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 class="mb-1"><b> @Html.DisplayNameFor(x=>x.Salary)</b></h4>
+                        </td>
+                        <td>
+                            <h4 class="mb-1">@Model.Salary TL</h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<style>
+
+
+
+</style>

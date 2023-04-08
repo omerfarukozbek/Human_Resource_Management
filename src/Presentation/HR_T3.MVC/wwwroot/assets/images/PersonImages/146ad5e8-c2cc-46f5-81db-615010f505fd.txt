@@ -1,0 +1,5 @@
+           catch (DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.SelectMany(eve => eve.ValidationErrors).Aggregate("", (current, ve) => $"{current}\n- {ve.ErrorMessage}");
+                MessageBox.Show(errorMessage);
+            }

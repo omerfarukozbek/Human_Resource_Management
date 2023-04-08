@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel Sayfası</h2>
+
+
+@model EmployeeSummaryVM
+<div class="main-body center-block">
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="~/@Model.Photo" alt="@Model.Email" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>@Model.ToString()</h4>
+                                <p class="text-secondary mb-1">@Model.Title</p>
+                                <p class="text-muted font-size-sm">@Model.Department</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Email
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Telefon</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @string.Format("{0} ({1}) {2} {3} {4}",
+                            Model.PhoneNumber.Substring(0, 1),
+                            Model.PhoneNumber.Substring(1, 3),
+                            Model.PhoneNumber.Substring(3, 3),
+                            Model.PhoneNumber.Substring(5, 2),
+                            Model.PhoneNumber.Substring(7, 2))
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Adres</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            @Model.Address
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+             <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            @Html.ActionLink("Diğer Bilgiler", "Detail", "Account", new { Model.Id }, new { @class="btn btn-gradient-info" })
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            @Html.ActionLink("Bilgileri Düzenle", "Update", "Account", null, new { @class="btn btn-gradient-primary" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

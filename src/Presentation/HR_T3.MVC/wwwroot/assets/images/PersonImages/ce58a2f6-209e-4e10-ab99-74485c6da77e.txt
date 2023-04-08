@@ -1,0 +1,34 @@
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           modelBuilder.Entity<StudentCourse>().HasKey(sc => new
+           {
+               //composite key baglantısı courseId ve studentId composite key oldu
+
+               sc.CourseId,
+
+               sc.StudentId
+
+           } );
+
+
+            // coka cok ilişki- bir studentcourse ın birden cok course u ve student ı olabilir onlarında birden cok studentcourse u olabilir
+
+            modelBuilder.Entity<StudentCourse>().HasOne(sc => sc.Course)  === Course için tanımlama
+
+                .WithMany(sc => sc.StudentCourses).HasForeignKey(sc => sc.CourseId);
+
+
+
+            modelBuilder.Entity<StudentCourse>().HasOne(sc => sc.Student) ====Student için tanımlama
+
+                .WithMany(sc => sc.StudentCourses).HasForeignKey(sc => sc.StudentId);
+
+
+            //bir paymentın bir ögrencisi olur bir ögrencinin birden cok paymentı olabilir
+
+
+            modelBuilder.Entity<Payment>().HasOne<Student>()
+
+                .WithMany(p => p.Payments).HasForeignKey(p => p.StudentID);
+
+        }

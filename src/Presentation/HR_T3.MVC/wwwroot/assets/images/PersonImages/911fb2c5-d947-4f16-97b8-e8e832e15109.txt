@@ -1,0 +1,91 @@
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.Extensions.Hosting
+Microsoft.EntityFrameworkCore.Tools	
+
+1.YOL ============CORE DA ÇALIŞIR=============================
+---Context Classını Dbcontext ten inherite aldıktan sonra override yazıp bosluk bırakarak Onconfing secilir 
+sonrasında OptionsBuilder.Usesql e Connection string eklenir
+
+ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=DataAnatationDB;Trusted_Connection=true");
+        }
+
+ 2.YOL ================================================
+
+--PROGRAM.CS İÇİNE MAİNİN İNİTİALİZE ALTINA YAZILACAK
+
+ var builder = new HostBuilder().ConfigureServices((services) =>
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=CodeFirstOkulDb;integrated security=true")
+                );
+            }
+          );
+            var host = builder.Build();
+
+            using (var serviceScope = host.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+
+                var myDbContext = services.GetRequiredService<ApplicationDbContext>();
+                Application.Run(new Form1(myDbContext));    //----- burdaki myDbContext form ekranında para metre olarak görülecek  
+(public Form1(ApplicationDbContext context)
+        {
+            InitializeComponent();
+            _context = context;  )   // gibi
+		
+            }
+
+3.YOL========================
+Appconfig içine EntitiyFrameWork altına
+
+<connectionStrings>
+		<add name="HastaneContext" connectionString="Server=(localdb)\MSSQLLocalDB;Database=DataAnatationDB;Trusted_Connection=true"
+			 providerName="System.Data.SqlClient"/>
+		
+	</connectionStrings>
+
+----------------------------------------------------------
+
+
+4.YOL===Context sınıfına yazmamız yeterli
+
+ public MeetingContext():base(@"Server=(localdb)\MSSQLLocalDB;Database=MeetingDB;Trusted_Connection=true") 
+        {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<MeetingContext>());
+        }
+
+==============================================
+
+2-APPLİCATİONDBCONTEXT SINIFI OLUSTURULACAK DbContext den Miras alacak
+
+public class ApplicationDbContext :DbContext
+    {
+
+        public ApplicationDbContext(DbContextOptions options):base(options)
+        {
+
+        }
+
+----------------------BUraya da olusturulan her sınıf için Dbset<> tanımlaması yapılır
+        public DbSet<Course> Courses { get; set; }
+
+    }
+
+
+
+
+============alternatife baglantı=================
+
+Context sınıfı içine 
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=ProjeCodeFirst;Trusted_Connection=True; ");
+        }
+
+metodu override edilecek
+

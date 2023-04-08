@@ -1,0 +1,230 @@
+﻿@using HR_T3.Domain.Enums
+@model EmployeeEditVM
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Personel Düzenleme Sayfası</h4>
+            <form class="form-sample" method="post" enctype="multipart/form-data">
+                <p class="card-description"> Personel Bilgileri </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="Id" class="col-sm-3 col-form-label">TC Kimlik No</label>
+                            <div class="col-md-6">
+                                <input asp-for="Id" class="form-control" type="text" onkeypress="clsNumOnly(event)" readonly onpaste="return false;" />
+                                <span asp-validation-for="Id" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Aktiflik</label>
+                            <div class="col-sm-4">
+                                <div class="form-check form-check-success">
+                                    <label class="form-check-label">
+                                        <input type="radio" asp-for="IsActive" class="form-check-input" value="true"> Aktif <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check form-check-danger">
+                                    <label class="form-check-label">
+                                        <input type="radio" asp-for="IsActive" class="form-check-input" value="false"> Pasif <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ad</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Name" type="text" class="form-control" id="Name" onkeypress="clsAlphaOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">İkinci Ad</label>
+                            <div class="col-sm-9">
+                                <input asp-for="MiddleName" type="text" class="form-control" id="MiddleName" onkeypress="clsAlphaOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="MiddleName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Soyad</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Surname" type="text" class="form-control" id="SurName" onkeypress="clsAlphaOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">İkinci Soyad</label>
+                            <div class="col-sm-9">
+                                <input asp-for="LastSurName" type="text" class="form-control" id="LastSurName" onkeypress="clsAlphaOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="LastSurName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="Gender" class="col-sm-3 col-form-label">Cinsiyet</label>
+                            <div class="col-sm-9">
+                                <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()">
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="Birthday" class="col-sm-3 col-form-label">Doğum Tarihi</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Birthday" id="birthDayPicker" class="form-control" type="text" />
+                                <span asp-validation-for="Birthday" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="Department" class="col-sm-3 col-form-label">Departman</label>
+                            <div class="col-sm-9">
+                                <select asp-for="Department" class="form-control" asp-items="Html.GetEnumSelectList<Department>()">
+                                </select>
+                                <span asp-validation-for="Department" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="Title" class="col-sm-3 col-form-label">Ünvan </label>
+                            <div class="col-sm-9">
+                                <select asp-for="Title" class="form-control" asp-items="Html.GetEnumSelectList<Title>()">
+                                </select>
+                                <span asp-validation-for="Title" class="text-danger">  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="PhoneNumber" class="col-sm-3 col-form-label">Telefon No </label>
+                            <div class="col-sm-9">
+                                <input asp-for="PhoneNumber" class="form-control" type="tel" onkeypress="clsNumOnly(event)" onpaste="return false;" maxlength="11" minlength="11" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input asp-for="Email" class="form-control" type="text" id="Email" />
+                                    <div class="input-group-append">
+                                        <input type="button" class="btn btn-gradient-success" id="btnEmail" value="Mail Oluştur" />
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Mezuniyet</label>
+                            <div class="col-sm-9">
+                                <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Graduation>()">
+                                </select>
+                                <span asp-validation-for="Graduation" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="StartDateOfWork" class="col-sm-3 col-form-label">İşe Başlama Tarihi</label>
+                            <div class="col-sm-9">
+                                <input asp-for="StartDateOfWork" id="startOfDatePicker" type="text" class="form-control " />
+                                <span asp-validation-for="StartDateOfWork" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Maaş</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Salary" type="text" class="form-control" onkeypress="clsNumOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="AnnualPermit" class="col-sm-3 col-form-label">Yıllık İzin</label>
+                            <div class="col-sm-9">
+                                <input asp-for="AnnualPermit" class="form-control" type="text" onkeypress="clsNumOnly(event)" onpaste="return false;" />
+                                <span asp-validation-for="AnnualPermit" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Maaş</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input asp-for="Salary" type="text" class="form-control" onkeypress="clsNumOnly(event)" onpaste="return false;" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"> TL</span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label asp-for="AnnualPermit" class="col-sm-3 col-form-label">Yıllık İzin</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input asp-for="AnnualPermit" class="form-control" type="text" onkeypress="clsNumOnly(event)" onpaste="return false;" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Gün</span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="AnnualPermit" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary me-2">Kaydet</button>
+                <button type="reset" class="btn btn-gradient-danger me-2">İptal</button>
+                <button type="button" onclick="history.back()" class="btn btn-gradient-info me-2">Geri Dön</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/Email.js"></script>
+<script src="~/assets/js/OnlyLetterForTxtbox.js"></script>
+<script src="~/assets/js/OnlyNumeric.js"></script>
+
